@@ -11,7 +11,10 @@ $(document).ready(function() {
   var div = $("<div>");
   var queryURL =
     "https://api.giphy.com/v1/gifs/search?apikey=KEisq4X4yK4PbMGynfJOqzvFkjVTYKtY&q=";
-  var buttonText = "test";
+  var imageUrl = "";
+  var gifUrl = "";
+
+  createButtons();
 
   $(".add_button").on("click", function() {
     var userInput = $(".user_field_form")
@@ -22,8 +25,6 @@ $(document).ready(function() {
     console.log(borderButtons);
     $(".user_field_form").val("");
   });
-
-  createButtons();
 
   function createButtons() {
     $(".button_bar").empty();
@@ -51,6 +52,18 @@ $(document).ready(function() {
         console.log(response);
 
         for (i = 0; i < 10; i++) {
+          $(".gifImage").on("click", function() {
+            var state = $(this).attr("state");
+
+            if (state === "still") {
+              $(this).attr("src", $(this).attr("gif_animated"));
+              $(this).attr("state", "animated");
+            } else if (state === "animated") {
+              $(this).attr("src", $(this).attr("gif_still"));
+              $(this).attr("state", "still");
+            }
+          });
+
           if (results[i].rating !== "r") {
             var gifDiv = $(`<div class="image_divs">`);
             var imageUrl = results[i].images.fixed_height_still.url;
@@ -63,12 +76,28 @@ $(document).ready(function() {
 
             image.attr("src", imageUrl);
             image.attr("alt", buttonText + " Image");
+            image.attr("state", "still");
+            image.attr("gif_still", imageUrl);
+            image.attr("gif_animated", gifUrl);
+            image.addClass("gifImage");
 
             gifDiv.append(image);
             gifDiv.append(p);
 
             $(".display_area").prepend(gifDiv);
           }
+
+          $(".gifImage").on("click", function() {
+            var state = $(this).attr("state");
+
+            if (state === "still") {
+              $(this).attr("src", $(this).attr("gif_animated"));
+              $(this).attr("state", "animated");
+            } else if (state === "animated") {
+              $(this).attr("src", $(this).attr("gif_still"));
+              $(this).attr("state", "still");
+            }
+          });
         }
       });
     });
