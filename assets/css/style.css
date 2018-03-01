@@ -1,31 +1,35 @@
-body{
-    height: 100%;
-    background: black;
-    color: white;
+body {
+  height: 100%;
+  background: black;
+  color: white;
+  font-family: "Poiret One", cursive;
 }
 
-#header_top{
-    padding-top: 40px;
-    margin-bottom: 30px;
+#header_top {
+  padding-top: 40px;
+  margin-bottom: 30px;
 }
 
-button{
-    margin: 0px 7px 0px 7px;
-    background: black;
-    color: white;
-    border-radius: 10px;
-    padding: 5px 8px 5px 8px;
+button {
+  margin: 0px 7px 0px 7px;
+  background: black;
+  color: white;
+  border-radius: 10px;
+  padding: 5px 8px 5px 8px;
 }
 
-.display_area{
-	margin: 15px;
+.user_input {
+  margin-bottom: 18px;
 }
 
-img{
-	margin: 10px;
-	border: 2px solid black;
+.display_area {
+  margin: 15px;
 }
 
-.image_divs{
-	float: left;
+img {
+  margin: 10px;
+}
+
+.image_divs {
+  float: left;
 }
