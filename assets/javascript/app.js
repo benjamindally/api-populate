@@ -16,7 +16,8 @@ $(document).ready(function() {
 
   createButtons();
 
-  $(".add_button").on("click", function() {
+  $(".add_button").on("click", function(event) {
+    event.preventDefault();
     var userInput = $(".user_field_form")
       .val()
       .trim();
